@@ -1,0 +1,20 @@
+[
+	{
+		"orderItems":
+			[{
+				"quantity":1,
+				"item":{
+					"id":1,
+					"name":"Java for beginners",
+					"price":150.0,
+					"pictureUrl":"https://i.imgur.com/aWkpX3W.png"
+					},
+				"totalPrice":150.0
+			}],
+		"id":1,
+		"dateCreated":"06/10/2021",
+		"status":"PAID",
+		"numberOfItems":1,
+		"totalOrderPrice":150.0
+	}
+]
