@@ -19,11 +19,14 @@ public class Item {
 
     private String pictureUrl;
 
-    public Item(Long id, @NotNull(message = "Item name is required.") String name, Double price, String pictureUrl) {
+    private String description;
+
+    public Item(Long id, @NotNull(message = "Item name is required.") String name, Double price, String pictureUrl, String description) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.pictureUrl = pictureUrl;
+        this.description = description;
     }
 
     public Item() {
@@ -60,5 +63,9 @@ public class Item {
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
     }
+
+    public String getDescription() { return this.description;}
+
+    public void setDescription(String description) { this.description = description;}
 
 }

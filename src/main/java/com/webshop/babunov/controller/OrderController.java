@@ -24,6 +24,7 @@ enum OrderStatus {
 }
 @RestController
 @RequestMapping("/api/orders")
+@CrossOrigin("*")
 public class OrderController {
 
     ItemsService itemsService;
