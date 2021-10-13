@@ -1,0 +1,8 @@
+<div class="cart-item">
+    <span>{{cartItem.title}}</span> x
+    <span>{{cartItem.qty}}</span>:
+    <strong>{{(cartItem.qty * cartItem.price) | currency: '₽'}}</strong>
+
+    <button type="button" class="btn btn-outline-secondary remove-btn" (click)="handleRemoveFromCart()">Убрать</button>
+
+</div>
