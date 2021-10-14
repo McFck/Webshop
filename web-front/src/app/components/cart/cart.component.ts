@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/models/cart-item';
 import { Item } from 'src/app/models/item';
 import { MessengerService } from 'src/app/services/messenger.service';
+import { Router } from "@angular/router"
 
 @Component({
   selector: 'app-cart',
@@ -15,16 +16,15 @@ export class CartComponent implements OnInit {
 
   cartTotal = 0
 
-  constructor(private msg: MessengerService) { }
+  constructor(private msg: MessengerService, private router: Router) { }
 
   ngOnInit() {
     this.msg.getMsg().subscribe((item: any) => {
-      if (item.id === undefined) {
+      if (item.id === undefined && item['type'] === undefined) {
         this.removeItemFromCart(item);
-      } else {
+      } else if (item.id != undefined) {
         this.addItemToCart(item);
       }
-
     })
   }
 
@@ -67,5 +67,10 @@ export class CartComponent implements OnInit {
     this.cartItems.forEach(item => {
       this.cartTotal += (item.qty * item.price)
     })
+  }
+
+  handleMoveToCheckOut() {
+    this.msg.sendMsg({ items: this.cartItems, type: 'checkout' });
+    this.router.navigate(['/checkout'])
   }
 }
