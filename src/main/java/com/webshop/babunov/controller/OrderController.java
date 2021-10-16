@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 enum OrderStatus {
     PAID
 }
+
 @RestController
 @RequestMapping("/api/orders")
 @CrossOrigin("*")
@@ -43,7 +44,7 @@ public class OrderController {
         return this.orderService.getAllOrders();
     }
 
-    @PostMapping
+    @PostMapping(value = "/add")
     public ResponseEntity<Order> create(@RequestBody OrderForm form) {
         List<OrderItem> formDtos = form.getItemOrders();
         validateItemsExistence(formDtos);
@@ -87,6 +88,10 @@ public class OrderController {
     }
 
     public static class OrderForm {
+
+        public OrderForm() {
+
+        }
 
         private List<OrderItem> itemOrders;
 

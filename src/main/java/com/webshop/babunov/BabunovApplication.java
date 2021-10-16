@@ -1,5 +1,9 @@
 package com.webshop.babunov;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.webshop.babunov.controller.OrderController;
+import com.webshop.babunov.dto.OrderItem;
 import com.webshop.babunov.model.Item;
 import com.webshop.babunov.model.User;
 import com.webshop.babunov.service.Interfaces.ItemsService;
@@ -8,6 +12,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.util.ArrayList;
 
 @SpringBootApplication
 public class BabunovApplication {
@@ -30,6 +36,18 @@ public class BabunovApplication {
 
             var user = new User("Ilya", "contact@babunov.dev", "pass", true);
             userService.persist(user);
+
+
+            ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+            var object = new OrderController.OrderForm();
+            var arr = new ArrayList<OrderItem>();
+            var orderItem = new OrderItem();
+            orderItem.setItem(item1);
+            orderItem.setQuantity(1);
+            arr.add(orderItem);
+            object.setItemOrders(arr);
+            String json = ow.writeValueAsString(object);
+            System.out.println("WARNING!!! " + json);
         };
     }
 }

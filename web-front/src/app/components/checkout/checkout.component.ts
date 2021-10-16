@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router"
+import { Router } from "@angular/router"
 import { Subscription } from 'rxjs';
 import { CartItem } from 'src/app/models/cart-item';
 import { CheckoutItem } from 'src/app/models/checkout-item';
@@ -15,50 +15,45 @@ import { OrderService } from 'src/app/services/order.service';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-  constructor(private router: Router, private msg: MessengerService, private orderService: OrderService, private itemService: ItemService) {}
-  checkoutItems: CartItem[] =[];
-  apiItems: Item[]=[];
+  constructor(private router: Router, private msg: MessengerService, private orderService: OrderService, private itemService: ItemService) { }
+  checkoutItems: CartItem[] = [];
   total: number = 0;
 
   ngOnInit(): void {
-    if(this.msg.valueObs.value['type'] === 'checkout'){
+    if (this.msg.valueObs.value['type'] === 'checkout') {
       this.checkoutItems = this.msg.valueObs.value['items'];
-      for(const value of this.checkoutItems){
-        this.total+=value.price * value.qty;
+      for (const value of this.checkoutItems) {
+        this.total += value.price * value.qty;
       }
     }
   }
 
-  checkoutHandle(){
+  checkoutHandle() {
     var inputValue = (<HTMLInputElement>document.getElementById("mobile")).value;
     const regex = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
-    if(regex.test(inputValue)){
-      var checkoutItemsArray = this.generateOrderItems();
-      var order = new OrderItem(checkoutItemsArray);
-      this.orderService.postData(order);
+    if (regex.test(inputValue)) {
+      this.fileOrder();
       this.router.navigate(['/checkout-success'])
     } else {
       alert("Не правильный формат номера телефона");
     }
   }
 
-  
-
-  generateOrderItems() : CheckoutItem[] {
-    var result : CheckoutItem[] = [];
-    var api : Item[] = [];
-    var obs = this.itemService.getItems();
-    console.log("API:" + api.length);
-    for(var i = 0; i < this.checkoutItems.length; i++){
-      for(var j =0; j< api.length; j++){
-        if(this.checkoutItems[i].itemId === api[j].id){
-          console.log("ADDING ITEM" + this.checkoutItems[i].title);
-          result.push(new CheckoutItem(api[j],this.checkoutItems[i].qty));
+  async fileOrder() {
+    const t = await this.itemService.getItems().toPromise();
+    var api: Item[] = t;
+    var result = [];
+    for (var i = 0; i < this.checkoutItems.length; i++) {
+      for (var j = 0; j < api.length; j++) {
+        if (this.checkoutItems[i].itemId === api[j].id) {
+          console.log("ADDING ITEM " + this.checkoutItems[i].title);
+          result.push(new CheckoutItem(api[j], this.checkoutItems[i].qty));
           break;
         }
       }
     }
-    return result;
+    var order = new OrderItem(result);
+    this.orderService.postData(order).subscribe();
   }
 
 }
