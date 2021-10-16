@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs'
+import { Observable, Subject, BehaviorSubject } from 'rxjs'
 import { Item } from '../models/item';
 
 @Injectable({
@@ -7,7 +7,13 @@ import { Item } from '../models/item';
 })
 export class MessengerService {
 
-  subject = new Subject<any>()
+  public valueObs = new BehaviorSubject<any>(null);
+
+  public setValue(value: any):void {
+    this.valueObs.next(value);
+  }
+
+  subject = new Subject<any>();
 
   constructor() { }
 

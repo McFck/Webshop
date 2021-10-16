@@ -10,7 +10,6 @@ import { Router } from "@angular/router"
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-
   cartItems: CartItem[] = [
   ];
 
@@ -70,7 +69,8 @@ export class CartComponent implements OnInit {
   }
 
   handleMoveToCheckOut() {
-    this.msg.sendMsg({ items: this.cartItems, type: 'checkout' });
+    //this.msg.sendMsg({ items: this.cartItems, type: 'checkout' });
+    this.msg.setValue({ items: this.cartItems, type: 'checkout' });
     this.router.navigate(['/checkout'])
   }
 }

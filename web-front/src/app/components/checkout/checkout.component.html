@@ -1,6 +1,17 @@
 <form id="form-box" method="get">
     <div id="form-title">Оформление заказа</div>
 
+    <ul *ngIf="checkoutItems.length > 0" class="list-group">
+      <li class="list-group-item" *ngFor="let item of checkoutItems">
+          <app-cart-item [cartItem]="item" [isDeletable]="false"></app-cart-item>
+      </li>
+  
+      <li class="list-group-item active">
+          <strong>Итого: </strong> {{ total | currency: '₽'}}
+      </li>
+
+    </ul>
+
     <div class="form-header">Номер телефона для обратной связи</div>
     <input class="form-input" id="mobile" />
   

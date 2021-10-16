@@ -10,6 +10,8 @@ import { MessengerService } from 'src/app/services/messenger.service';
 export class CartItemComponent implements OnInit {
 
   @Input() cartItem: any
+
+  @Input() isDeletable : boolean = false;
   
   constructor(private msg: MessengerService) { }
 
