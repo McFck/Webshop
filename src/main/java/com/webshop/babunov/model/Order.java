@@ -28,6 +28,16 @@ public class Order {
     @Valid
     private List<OrderItem> orderItems = new ArrayList<>();
 
+    private String contactNumber;
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
     @Transient
     public Double getTotalOrderPrice() {
         double sum = 0D;

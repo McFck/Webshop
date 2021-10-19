@@ -19,10 +19,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-enum OrderStatus {
-    PAID
-}
-
 @RestController
 @RequestMapping("/api/orders")
 @CrossOrigin("*")
@@ -50,6 +46,7 @@ public class OrderController {
         validateItemsExistence(formDtos);
         Order order = new Order();
         order.setStatus(OrderStatus.PAID.name());
+        order.setContactNumber(form.contact);
         order = this.orderService.create(order);
 
         List<com.webshop.babunov.model.OrderItem> orderItems = new ArrayList<>();
@@ -94,6 +91,16 @@ public class OrderController {
         }
 
         private List<OrderItem> itemOrders;
+
+        private String contact;
+
+        public void setContact(String contact) {
+            this.contact = contact;
+        }
+
+        public String getContact() {
+            return contact;
+        }
 
         public List<OrderItem> getItemOrders() {
             return itemOrders;

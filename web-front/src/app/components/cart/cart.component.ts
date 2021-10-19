@@ -18,12 +18,20 @@ export class CartComponent implements OnInit {
   constructor(private msg: MessengerService, private router: Router) { }
 
   ngOnInit() {
-    this.msg.getMsg().subscribe((item: any) => {
-      if (item.id === undefined && item['type'] === undefined) {
-        this.removeItemFromCart(item);
-      } else if (item.id != undefined) {
-        this.addItemToCart(item);
-      }
+    this.msg.subs.push(
+      this.msg.getMsg().subscribe((item: any) => {
+        if (item.id === undefined && item['type'] === undefined) {
+          this.removeItemFromCart(item);
+        } else if (item.id != undefined) {
+          this.addItemToCart(item);
+        }
+      })
+    );
+  }
+
+  ngOnDestroy(){
+    this.msg.subs.forEach(n=>{
+      n.unsubscribe();
     })
   }
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject, BehaviorSubject } from 'rxjs'
+import { Observable, Subject, BehaviorSubject, Subscription } from 'rxjs'
 import { Item } from '../models/item';
 
 @Injectable({
@@ -8,6 +8,8 @@ import { Item } from '../models/item';
 export class MessengerService {
 
   public valueObs = new BehaviorSubject<any>(null);
+
+  public subs: Subscription[] = [];
 
   public setValue(value: any):void {
     this.valueObs.next(value);

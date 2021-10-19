@@ -36,18 +36,6 @@ public class BabunovApplication {
 
             var user = new User("Ilya", "contact@babunov.dev", "pass", true);
             userService.persist(user);
-
-
-            ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-            var object = new OrderController.OrderForm();
-            var arr = new ArrayList<OrderItem>();
-            var orderItem = new OrderItem();
-            orderItem.setItem(item1);
-            orderItem.setQuantity(1);
-            arr.add(orderItem);
-            object.setItemOrders(arr);
-            String json = ow.writeValueAsString(object);
-            System.out.println("WARNING!!! " + json);
         };
     }
 }

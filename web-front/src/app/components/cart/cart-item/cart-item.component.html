@@ -3,6 +3,6 @@
     <span>{{cartItem.qty}}</span>:
     <strong>{{(cartItem.qty * cartItem.price) | currency: '₽'}}</strong>
 
-    <button type="button" class="btn btn-outline-secondary remove-btn" [hidden]="!isDeletable" (click)="handleRemoveFromCart()">Убрать</button>
+    <button type="button" class="close" [hidden]="!isDeletable" (click)="handleRemoveFromCart()"></button>
 
 </div>

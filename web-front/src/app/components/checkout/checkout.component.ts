@@ -32,27 +32,26 @@ export class CheckoutComponent implements OnInit {
     var inputValue = (<HTMLInputElement>document.getElementById("mobile")).value;
     const regex = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
     if (regex.test(inputValue)) {
-      this.fileOrder();
+      this.fileOrder(inputValue);
       this.router.navigate(['/checkout-success'])
     } else {
       alert("Не правильный формат номера телефона");
     }
   }
 
-  async fileOrder() {
+  async fileOrder(contact: string) {
     const t = await this.itemService.getItems().toPromise();
     var api: Item[] = t;
     var result = [];
     for (var i = 0; i < this.checkoutItems.length; i++) {
       for (var j = 0; j < api.length; j++) {
         if (this.checkoutItems[i].itemId === api[j].id) {
-          console.log("ADDING ITEM " + this.checkoutItems[i].title);
           result.push(new CheckoutItem(api[j], this.checkoutItems[i].qty));
           break;
         }
       }
     }
-    var order = new OrderItem(result);
+    var order = new OrderItem(result, contact);
     this.orderService.postData(order).subscribe();
   }
 

@@ -1,0 +1,23 @@
+.close {
+    background: transparent;
+    bottom: 12px;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    border: transparent;
+}
+.close:after {
+    content: '';
+    height: 15px;
+    border-left: 2px solid rgb(255, 0, 0);
+    position: absolute;
+    transform: rotate(45deg);
+}
+
+.close:before {
+    content: '';
+    height: 15px;
+    border-left: 2px solid rgb(255, 0, 0);
+    position: absolute;
+    transform: rotate(-45deg);
+}
