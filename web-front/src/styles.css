@@ -84,3 +84,16 @@
     font-weight: 900;
     background-color: green;
 }
+
+.guest-form-card h2 {
+    text-transform: uppercase;
+    font-size: medium;
+  }
+  
+  .guest-form-card label {
+    font-size: small;
+  }
+  
+  .btn-primary.disabled, .btn-primary:disabled {
+    cursor: not-allowed;
+  }
