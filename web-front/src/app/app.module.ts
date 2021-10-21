@@ -19,6 +19,7 @@ import { PageNotFoundComponent } from './components/shared/page-not-found/page-n
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { SuccessComponent } from './components/checkout/success/success.component';
 import { CookieService } from 'ngx-cookie-service';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CookieService } from 'ngx-cookie-service';
     LoginComponent,
     PageNotFoundComponent,
     CheckoutComponent,
-    SuccessComponent
+    SuccessComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

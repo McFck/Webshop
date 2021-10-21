@@ -1,5 +1,6 @@
 import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   model: any = {}
 
-  constructor(private userService: UserService, private authService: AuthService, private cookieService: CookieService) { }
+  constructor(private userService: UserService, private authService: AuthService, private cookieService: CookieService, private router: Router) {
+   }
 
   ngOnInit(): void {
     this.isLogged();
@@ -23,12 +25,9 @@ export class LoginComponent implements OnInit {
   async isLogged() {
     const res = this.userService.isLoggedIn().subscribe(f=>{
       if (f.status) {
-        console.log("USER LOGGED IN!");
-      } else {
-        console.log("USER NOT LOGGED IN!");
+        this.router.navigate(['/shop']);
       }
     });
-    
   }
 
   login() {
@@ -40,10 +39,11 @@ export class LoginComponent implements OnInit {
     if (result['result']) {
       console.log("SUCCESS");
       this.authService.setLoggedIn(true);
-      localStorage.setItem('token', result['id']);
-      this.cookieService.set( 'token', result['id'] );
+      window.location.reload();
+      //localStorage.setItem('token', result['id']);
+      //this.cookieService.set( 'token', result['id'] );
     } else {
-      console.log("DENIED");
+      alert("Не правильный логин или пароль");
     }
   }
 }

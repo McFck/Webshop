@@ -30,6 +30,12 @@
     margin-left:auto;
     display:grid;
 }
+.auth-header {
+    text-decoration:solid;
+    margin-right: 5px;
+    margin-left:auto;
+    display:grid;
+}
 
 .itemName{
     font-size:x-large;

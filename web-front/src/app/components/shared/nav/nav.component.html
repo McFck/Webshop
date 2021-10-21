@@ -1,3 +1,7 @@
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
   <h5 class="my-0 mr-md-auto font-weight-normal">
     <app-header></app-header>
@@ -9,5 +13,7 @@
     <a class="p-2 text-dark" href="#">КЛИК 3</a>
     -->
   </nav>
-  <a class="btn btn-primary btn-login-header" [routerLink]="['/login']">Вход для персонала</a>
+  <a class="btn btn-primary btn-login-header" [hidden]="isAuthenticated" [routerLink]="['/login']">Вход для персонала</a>
+  <a class="auth-header" [hidden]="!isAuthenticated">Вы авторизованы</a>
+  <a class="material-icons" [hidden]="!isAuthenticated" style="text-decoration: none" [routerLink]="['/logout']">exit_to_app</a>
 </div>

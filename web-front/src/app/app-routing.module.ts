@@ -5,10 +5,12 @@ import { ShoppingCartComponent } from "./components/shopping-cart/shopping-cart.
 import { PageNotFoundComponent } from "./components/shared/page-not-found/page-not-found.component";
 import { CheckoutComponent } from "./components/checkout/checkout.component";
 import { SuccessComponent } from "./components/checkout/success/success.component";
+import { LogoutComponent } from "./components/logout/logout.component";
 
 const routes : Routes = [
     {path: '', redirectTo: '/shop', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
+    {path: 'logout', component: LogoutComponent},
     {path: 'shop', component: ShoppingCartComponent},
     {path: 'checkout', component: CheckoutComponent},
     {path: 'checkout-success', component: SuccessComponent},
@@ -17,7 +19,7 @@ const routes : Routes = [
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
     ],
     exports: [
         RouterModule
