@@ -4,5 +4,7 @@ export const baseUrl = environment.production ? 'placeholder' : 'http://localhos
 export const itemsUrl = baseUrl + '/items';
 export const ordersUrl = baseUrl + '/orders';
 export const usersUrl = baseUrl + '/users';
+export const sessionsUrl = baseUrl + '/sessions';
 export const postOrderUrl = ordersUrl + '/add';
 export const postAuthRequestUrl = usersUrl + '/auth';
+export const verifyAuth = sessionsUrl + '/verifyAuth';

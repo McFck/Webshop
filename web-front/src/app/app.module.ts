@@ -18,6 +18,7 @@ import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { SuccessComponent } from './components/checkout/success/success.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { SuccessComponent } from './components/checkout/success/success.componen
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

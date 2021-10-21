@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Transactional
@@ -35,6 +36,13 @@ public class UserService {
     public List<User> delete(@PathVariable String username) {
         userRepository.deleteById(username);
         return (List<User>) userRepository.findAll();
+    }
+
+    public boolean authenticate(@RequestBody User user){
+        if(userRepository.existsById(user.getUsername())){
+            return Objects.equals(userRepository.findById(user.getUsername()).get().getPassword(), user.getPassword());
+        }
+        return false;
     }
 
     public List<User> put(@PathVariable String username, @RequestBody User user) {

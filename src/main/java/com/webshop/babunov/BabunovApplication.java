@@ -23,6 +23,12 @@ public class BabunovApplication {
     }
 
     @Bean
+    CORSFilter corsFilter() {
+        CORSFilter filter = new CORSFilter();
+        return filter;
+    }
+
+    @Bean
     CommandLineRunner runner(ItemsService itemsService, UserService userService) {
         return args -> {
             var item1 = new Item(1L, "Java for beginners", 150.00, "https://i.imgur.com/aWkpX3W.png", "You will need this");
