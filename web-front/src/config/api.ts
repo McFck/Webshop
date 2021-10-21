@@ -7,4 +7,5 @@ export const usersUrl = baseUrl + '/users';
 export const sessionsUrl = baseUrl + '/sessions';
 export const postOrderUrl = ordersUrl + '/add';
 export const postAuthRequestUrl = usersUrl + '/auth';
+export const postLogoutUrl = sessionsUrl + '/invalidate/session';
 export const verifyAuth = sessionsUrl + '/verifyAuth';

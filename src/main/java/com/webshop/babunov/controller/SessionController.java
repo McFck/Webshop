@@ -11,9 +11,9 @@ import java.util.Objects;
 @CrossOrigin("*")
 public class SessionController {
     @PostMapping(value = "/invalidate/session")
-    public String destroySession(HttpServletRequest request) {
+    public boolean destroySession(HttpServletRequest request) {
         request.getSession().invalidate();
-        return "redirect:/home";
+        return true;
     }
 
     @GetMapping(value = "/verifyAuth")
