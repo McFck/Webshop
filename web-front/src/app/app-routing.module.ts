@@ -6,6 +6,7 @@ import { PageNotFoundComponent } from "./components/shared/page-not-found/page-n
 import { CheckoutComponent } from "./components/checkout/checkout.component";
 import { SuccessComponent } from "./components/checkout/success/success.component";
 import { LogoutComponent } from "./components/logout/logout.component";
+import { OrdersControlComponent } from "./components/orders-control/orders-control.component";
 
 const routes : Routes = [
     {path: '', redirectTo: '/shop', pathMatch: 'full'},
@@ -14,6 +15,7 @@ const routes : Routes = [
     {path: 'shop', component: ShoppingCartComponent},
     {path: 'checkout', component: CheckoutComponent},
     {path: 'checkout-success', component: SuccessComponent},
+    {path: 'orders-control', component: OrdersControlComponent},
     {path: '**', component: PageNotFoundComponent}
 ]
 

@@ -1,0 +1,24 @@
+<h2>Заказы</h2>
+<ul class="heroes">
+  <table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Общая стоимость</th>
+            <th>Дата</th>
+            <th>Номер клиента</th>
+            <th>Статус заказа</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of items">
+            <td>{{item.id}}</td>
+            <td>{{item.totalOrderPrice}}</td>
+            <td>{{item.dateCreated}}</td>
+            <td>{{item.contactNumber}}</td>
+            <td>{{item.status == "PAID" ? "Оплачен" : "Не оплачен"}}</td>
+        </tr>
+    </tbody>
+  </table>
+</ul>

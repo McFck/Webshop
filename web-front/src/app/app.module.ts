@@ -20,6 +20,9 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { SuccessComponent } from './components/checkout/success/success.component';
 import { CookieService } from 'ngx-cookie-service';
 import { LogoutComponent } from './components/logout/logout.component';
+import { OrdersControlComponent } from './components/orders-control/orders-control.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -36,13 +39,16 @@ import { LogoutComponent } from './components/logout/logout.component';
     PageNotFoundComponent,
     CheckoutComponent,
     SuccessComponent,
-    LogoutComponent
+    LogoutComponent,
+    OrdersControlComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatTableModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
