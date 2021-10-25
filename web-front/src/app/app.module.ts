@@ -22,7 +22,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { LogoutComponent } from './components/logout/logout.component';
 import { OrdersControlComponent } from './components/orders-control/orders-control.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -47,8 +46,7 @@ import {MatTableModule} from '@angular/material/table';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule,
-    MatTableModule
+    BrowserAnimationsModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

@@ -23,3 +23,15 @@
     text-align: center;
     font-weight: bold;
   }
+
+  .zui-table-highlight tbody tr:hover {
+    background-color: #CCE7E7;
+}
+
+.control-button {
+  color: black;
+  font-weight: 900;
+  border-style:solid;
+  border-color:#287EC7;
+  margin: 5px;
+}
