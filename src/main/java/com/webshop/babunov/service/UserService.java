@@ -1,7 +1,6 @@
 package com.webshop.babunov.service;
 
 import com.webshop.babunov.model.User;
-import com.webshop.babunov.repository.OrderRepository;
 import com.webshop.babunov.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,8 +37,8 @@ public class UserService {
         return (List<User>) userRepository.findAll();
     }
 
-    public boolean authenticate(@RequestBody User user){
-        if(userRepository.existsById(user.getUsername())){
+    public boolean authenticate(@RequestBody User user) {
+        if (userRepository.existsById(user.getUsername())) {
             return Objects.equals(userRepository.findById(user.getUsername()).get().getPassword(), user.getPassword());
         }
         return false;

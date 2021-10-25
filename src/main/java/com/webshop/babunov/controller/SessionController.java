@@ -1,10 +1,8 @@
 package com.webshop.babunov.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/sessions")
@@ -26,11 +24,11 @@ public class SessionController {
 
     public static class VerifyResponse {
 
+        private Boolean status;
+
         public VerifyResponse() {
 
         }
-
-        private Boolean status;
 
         public Boolean getStatus() {
             return this.status;

@@ -1,16 +1,12 @@
 package com.webshop.babunov.service;
 
 import com.webshop.babunov.model.Order;
-import com.webshop.babunov.model.User;
 import com.webshop.babunov.repository.OrderRepository;
 import com.webshop.babunov.service.Interfaces.OrderService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDate;
-import java.time.ZoneOffset;
-import java.util.List;
 
 @Service
 @Transactional

@@ -1,7 +1,5 @@
 package com.webshop.babunov;
 
-import org.springframework.context.annotation.Bean;
-
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

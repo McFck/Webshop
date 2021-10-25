@@ -1,9 +1,5 @@
 package com.webshop.babunov;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import com.webshop.babunov.controller.OrderController;
-import com.webshop.babunov.dto.OrderItem;
 import com.webshop.babunov.model.Item;
 import com.webshop.babunov.model.User;
 import com.webshop.babunov.service.Interfaces.ItemsService;
@@ -12,8 +8,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import java.util.ArrayList;
 
 @SpringBootApplication
 public class BabunovApplication {
