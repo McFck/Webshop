@@ -8,11 +8,6 @@
   </h5>
   <nav class="my-2 my-md-0 mr-md-3">
     <a class="btn btn-primary orders-header" [hidden]="!isAuthenticated" [routerLink]="['/orders-control']">Заказы</a>
-    <!--
-    <a class="p-2 text-dark" href="#">КЛИК 1</a>
-    <a class="p-2 text-dark" href="#">КЛИК 2</a>
-    <a class="p-2 text-dark" href="#">КЛИК 3</a>
-    -->
   </nav>
   <a class="btn btn-primary btn-login-header" [hidden]="isAuthenticated" [routerLink]="['/login']">Вход для персонала</a>
   <a class="auth-header" [hidden]="!isAuthenticated">Вы авторизованы</a>

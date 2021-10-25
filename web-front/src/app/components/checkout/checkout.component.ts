@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router"
-import { Subscription } from 'rxjs';
 import { CartItem } from 'src/app/models/cart-item';
 import { CheckoutItem } from 'src/app/models/checkout-item';
 import { Item } from 'src/app/models/item';

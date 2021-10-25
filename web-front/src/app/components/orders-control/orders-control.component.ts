@@ -17,7 +17,7 @@ interface tableOrder extends OrderResponse {
 export class OrdersControlComponent implements OnInit {
   items: tableOrder[];
 
-  constructor(private ordersService: OrderService, private router:Router) {
+  constructor(private ordersService: OrderService, private router: Router) {
     this.items = [{
       contactNumber: "",
       dateCreated: "",
@@ -51,14 +51,14 @@ export class OrdersControlComponent implements OnInit {
     })
   }
 
-  updateStatusHandle(item: OrderResponse){
+  updateStatusHandle(item: OrderResponse) {
     var orderedItems: Item[] = [];
-    item.orderItems.forEach(x=>{
+    item.orderItems.forEach(x => {
       orderedItems.push(x.item);
     });
-    this.ordersService.updateStatus(new Order(item.id,item.dateCreated, item.status, orderedItems,item.contactNumber)).subscribe(x=>{
-      this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-      this.router.navigate(['orders-control']));
+    this.ordersService.updateStatus(new Order(item.id, item.dateCreated, item.status, orderedItems, item.contactNumber)).subscribe(x => {
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+        this.router.navigate(['orders-control']));
     });
   }
 }

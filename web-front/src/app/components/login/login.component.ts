@@ -1,4 +1,3 @@
-import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -40,8 +39,6 @@ export class LoginComponent implements OnInit {
       console.log("SUCCESS");
       this.authService.setLoggedIn(true);
       window.location.reload();
-      //localStorage.setItem('token', result['id']);
-      //this.cookieService.set( 'token', result['id'] );
     } else {
       alert("Не правильный логин или пароль");
     }

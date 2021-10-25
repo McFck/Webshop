@@ -77,7 +77,6 @@ export class CartComponent implements OnInit {
   }
 
   handleMoveToCheckOut() {
-    //this.msg.sendMsg({ items: this.cartItems, type: 'checkout' });
     this.msg.setValue({ items: this.cartItems, type: 'checkout' });
     this.router.navigate(['/checkout'])
   }

@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CartItem } from 'src/app/models/cart-item';
 import { MessengerService } from 'src/app/services/messenger.service';
 
 @Component({

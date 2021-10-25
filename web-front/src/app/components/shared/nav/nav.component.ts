@@ -8,16 +8,16 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class NavComponent implements OnInit {
 
-  isAuthenticated : boolean = false
+  isAuthenticated: boolean = false
 
-  constructor(private userService : UserService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.isLogged();
   }
 
   async isLogged() {
-    const res = this.userService.isLoggedIn().subscribe(f=>{
+    const res = this.userService.isLoggedIn().subscribe(f => {
       if (f.status) {
         this.isAuthenticated = true;
       }

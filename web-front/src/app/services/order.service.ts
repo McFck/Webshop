@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { OrderItem } from '../models/order-item';
-import { ordersUrl, postOrderUrl, updateOrderUrl } from 'src/config/api';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { OrderResponse } from './OrderResponse';
+import { ordersUrl, postOrderUrl, updateOrderUrl } from 'src/config/api';
 import { Order } from '../models/order';
+import { OrderItem } from '../models/order-item';
+import { OrderResponse } from './OrderResponse';
 
 @Injectable({
   providedIn: 'root'
