@@ -40,12 +40,26 @@ public class OrderController {
         return this.orderService.getAllOrders();
     }
 
+    @PostMapping(value = "/update")
+    public ResponseEntity<Order> updateStatus(@RequestBody Order order){
+        order.setStatus(Objects.equals(order.getStatus(), "PAID") ? OrderStatus.UNPAID.name() : OrderStatus.PAID.name());
+        this.orderService.update(order);
+        HttpHeaders headers = new HttpHeaders();
+        String uri = ServletUriComponentsBuilder
+                .fromCurrentServletMapping()
+                .path("/orders/{id}")
+                .buildAndExpand(order.getId())
+                .toString();
+        headers.add("Location", uri);
+        return new ResponseEntity<>(order, headers, HttpStatus.CREATED);
+    }
+
     @PostMapping(value = "/add")
     public ResponseEntity<Order> create(@RequestBody OrderForm form) {
         List<OrderItem> formDtos = form.getItemOrders();
         validateItemsExistence(formDtos);
         Order order = new Order();
-        order.setStatus(OrderStatus.PAID.name());
+        order.setStatus(OrderStatus.UNPAID.name());
         order.setContactNumber(form.contact);
         order = this.orderService.create(order);
 
